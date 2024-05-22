@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 
 
-public class User extends Model{
+public class User extends Model<User>{
 
 
     private int id;
     private String username;
     private String password;
 
-    final static Repository<User> userRepository = new Repository<>(User.class);
-    final static ArrayList<User> users = userRepository.getAll();
+    public static final Repository<User> repository = new Repository<>(User.class);
+
 
     public User(){
 
@@ -24,6 +24,12 @@ public class User extends Model{
         this.username = username;
         this.password = password;
 
+    }
+
+
+    @Override
+    protected Repository<User> getRepository() {
+        return repository;
     }
 
     @Override
@@ -57,7 +63,7 @@ public class User extends Model{
     }
 
     public static boolean authenticate(String username, String password) {
-        for (User user : users) {
+        for (User user : repository.getAll()) {
             if (user.getUsername().equals(username)) {
                 String encryptedPassword = Crypto.encrypt(password);
                 return user.password.equals(encryptedPassword);
@@ -67,14 +73,13 @@ public class User extends Model{
     }
 
     public static User createUser(String username, String password) throws UserAlreadyExistsException {
-        for (User user : users) {
+        for (User user : repository.getAll()) {
             if (user.getUsername().equals(username)) {
                 throw new UserAlreadyExistsException();
             }
         }
-        User user = new User(users.size(), username, Crypto.encrypt(password));
+        User user = new User(repository.getAll().size(), username, Crypto.encrypt(password));
         user.save();
-        users.add(user);
         return user;
     }
 

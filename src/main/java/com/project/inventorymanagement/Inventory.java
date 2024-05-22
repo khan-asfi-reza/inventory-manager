@@ -5,16 +5,14 @@ import java.util.*;
 
 class Inventory implements Iterable<StockableProduct> {
     private final ArrayList<StockableProduct> items;
-    Repository<Game> gameRepository = new Repository<>(Game.class);
-    Repository<Movie> movieRepository = new Repository<>(Movie.class);
-    Repository<Music> musicRepository = new Repository<>(Music.class);
+
 
 
     public Inventory() {
         items = new ArrayList<>();
-        items.addAll(gameRepository.getAll());
-        items.addAll(movieRepository.getAll());
-        items.addAll(musicRepository.getAll());
+        items.addAll(Game.repository.getAll());
+        items.addAll(Movie.repository.getAll());
+        items.addAll(Music.repository.getAll());
     }
 
 

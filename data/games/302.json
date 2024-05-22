@@ -1,1 +1,10 @@
-{"name":"God of War","productId":302,"price":12.0,"genre":"Action","yearPublished":2005,"discount":5.0,"numberOfItemsStocked":570,"developer":"Santa Monica Studio"}
+{
+  "name" : "God of War",
+  "productId" : 302,
+  "price" : 12.0,
+  "genre" : "Action",
+  "yearPublished" : 2005,
+  "discount" : 5.0,
+  "numberOfItemsStocked" : 570,
+  "developer" : "Santa Monica Studio"
+}

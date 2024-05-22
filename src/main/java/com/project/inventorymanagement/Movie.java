@@ -1,14 +1,10 @@
 package com.project.inventorymanagement;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-
 public class Movie extends StockableProduct {
     private String director;
+    public static final  Repository<Movie> repository = new Repository<>(Movie.class);
+
 
     public Movie() {
         super();
@@ -17,6 +13,11 @@ public class Movie extends StockableProduct {
     Movie(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked, String director) {
         super(name, productId, price, genre, yearPublished, discount, numberOfItemsStocked);
         this.director = director;
+    }
+
+    @Override
+    protected Repository<Movie> getRepository() {
+        return repository;
     }
 
     public String getDirector() {

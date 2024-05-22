@@ -1,1 +1,10 @@
-{"name":"Grand Theft Auto V","productId":303,"price":30.0,"genre":"Action-Adventure","yearPublished":2013,"discount":20.0,"numberOfItemsStocked":600,"developer":"Rockstar Games"}
+{
+  "name" : "Grand Theft Auto V",
+  "productId" : 303,
+  "price" : 30.0,
+  "genre" : "Action-Adventure",
+  "yearPublished" : 2013,
+  "discount" : 20.0,
+  "numberOfItemsStocked" : 600,
+  "developer" : "Rockstar Games"
+}

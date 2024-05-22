@@ -1,1 +1,10 @@
-{"name":"Life Is Beautiful","productId":202,"price":20.0,"genre":"Comedy","yearPublished":1997,"discount":0.0,"numberOfItemsStocked":125,"director":"Roberto Benigni"}
+{
+  "name" : "Life Is Beautiful",
+  "productId" : 202,
+  "price" : 20.0,
+  "genre" : "Comedy",
+  "yearPublished" : 1997,
+  "discount" : 0.0,
+  "numberOfItemsStocked" : 125,
+  "director" : "Roberto Benigni"
+}

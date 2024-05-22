@@ -1,1 +1,10 @@
-{"name":"AM","productId":102,"price":10.0,"genre":"Indie Rock","yearPublished":2013,"discount":10.0,"numberOfItemsStocked":10,"artistName":"Arctic Monkeys"}
+{
+  "name" : "AM",
+  "productId" : 102,
+  "price" : 10.0,
+  "genre" : "Indie Rock",
+  "yearPublished" : 2013,
+  "discount" : 10.0,
+  "numberOfItemsStocked" : 10,
+  "artistName" : "Arctic Monkeys"
+}

@@ -2,7 +2,7 @@ package com.project.inventorymanagement;
 
 import java.io.*;
 
-public class StockableProduct extends Product implements Stockable, Serializable  {
+public abstract class StockableProduct extends Product implements Stockable, Serializable  {
     private int numberOfItemsStocked;
 
     public StockableProduct() {
@@ -76,33 +76,6 @@ public class StockableProduct extends Product implements Stockable, Serializable
                 ", Year Published: " + this.getYearPublished() +
                 ", Stock Level: " + numberOfItemsStocked;
     }
-
-    public void writeToFile(String dataDir){
-        String dir = dataDir+this.getProductId()+".dat";
-        try {
-            FileOutputStream fileOut = new FileOutputStream(dir);
-            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-            objOut.writeObject(this);
-            objOut.close();
-            fileOut.close();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void deleteFile(String dataDir){
-        String dir = dataDir+this.getProductId()+".dat";
-        try {
-            File file = new File(dir);
-            boolean _ = file.delete();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-
 
 
 }

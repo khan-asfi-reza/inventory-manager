@@ -2,28 +2,34 @@ package com.project.inventorymanagement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.io.File;
-import java.io.IOException;
 
 
+public abstract class Model<T extends Model<T> > {
 
-public abstract class Model {
+    protected abstract Repository<T> getRepository();
 
+    /**
+     * Primary key is needed to store the respective instance in its own json file.
+     * For User the primary key is id, for Product the primary key is going to be productId.
+     *
+     */
     @JsonIgnore
     abstract public int getPrimaryKey();
 
+    /**
+     * Stores the instance's data in the respective json file.
+     * After setting the instance attribute, call `.save()` to save it in the json file
+     */
     protected void save() {
-        String dirPath = "data/" + this.getClass().getSimpleName().toLowerCase() + "s/";
-        String filePath = dirPath + getPrimaryKey() + ".json";
-        try {
-            File directory = new File(dirPath);
-            if (!directory.exists()) {
-                boolean _ = directory.mkdirs();
-            }
-            JsonUtil.serializeToJson(this, filePath);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        Repository<T> repo = getRepository() ;
+        if (repo != null) {
+            repo.save(this);
         }
+    }
+
+
+    public Model(){
+
     }
 
 }
