@@ -1,14 +1,12 @@
 package com.project.inventorymanagement;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class StockableProduct extends Product implements Stockable, Serializable  {
     private int numberOfItemsStocked;
 
     public StockableProduct() {
-        super();
+
     }
 
     StockableProduct(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked) {
@@ -16,20 +14,6 @@ public class StockableProduct extends Product implements Stockable, Serializable
         this.numberOfItemsStocked = numberOfItemsStocked;
     }
 
-
-    protected void saveToJson() {
-        String dirPath = "data/" + this.getClass().getSimpleName().toLowerCase() + "s/";
-        String filePath = dirPath + getProductId() + ".json";
-        try {
-            File directory = new File(dirPath);
-            if (!directory.exists()) {
-                boolean _ = directory.mkdirs();
-            }
-            JsonUtil.serializeToJson(this, filePath);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     @Override
     public void setProductId(int productId) {

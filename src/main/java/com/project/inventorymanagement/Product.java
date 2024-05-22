@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 
-public abstract class Product {
+public abstract class Product extends Model {
     private String name;
     private int productId;
     private double price;
@@ -16,6 +16,9 @@ public abstract class Product {
 
     }
 
+    public int getPrimaryKey(){
+        return productId;
+    }
 
     // Constructor
     Product(String name, int productId, double price, String genre, int yearPublished, double discount) {

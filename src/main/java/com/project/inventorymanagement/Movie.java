@@ -32,31 +32,5 @@ public class Movie extends StockableProduct {
         return super.getInfo() + ", Directed by " + director;
     }
 
-    public static ArrayList<Movie> readFromFile(String dataDir){
-        File folder = new File(dataDir);
-        ArrayList<Movie> products = new ArrayList<>();
-        if(!folder.exists()){
-            boolean _ = folder.mkdirs();
-        }
-        File[] files = folder.listFiles();
-        if(files != null){
-            for (final File fileEntry : files) {
-                if (fileEntry.isFile() && fileEntry.getName().endsWith(".dat")){
-                    try {
-                        FileInputStream fileIn = new FileInputStream(dataDir + "/" + fileEntry.getName());
-                        ObjectInputStream in = new ObjectInputStream(fileIn);
-                        Object object = in.readObject();
-                        products.add((Movie)object);
-                        in.close();
-                        fileIn.close();
-                    }
-                    catch (IOException | ClassNotFoundException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-            }
-        }
-        return products;
-    }
 
 }
