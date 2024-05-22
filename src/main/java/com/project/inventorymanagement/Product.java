@@ -1,5 +1,9 @@
 package com.project.inventorymanagement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
+
 public abstract class Product {
     private String name;
     private int productId;
@@ -7,6 +11,11 @@ public abstract class Product {
     private String genre;
     private int yearPublished;
     private double discount;
+
+    Product(){
+
+    }
+
 
     // Constructor
     Product(String name, int productId, double price, String genre, int yearPublished, double discount) {
@@ -34,6 +43,10 @@ public abstract class Product {
     public void setYearPublished(int yearPublished) { this.yearPublished = yearPublished; }
     public void setDiscount(double discount) { this.discount = discount; }
 
+    @JsonIgnore
     abstract String getInfo();
+
+    @JsonIgnore
     abstract public String toString();
+
 }
