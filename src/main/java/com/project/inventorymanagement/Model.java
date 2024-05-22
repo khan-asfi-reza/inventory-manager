@@ -1,5 +1,7 @@
 package com.project.inventorymanagement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -7,6 +9,7 @@ import java.io.IOException;
 
 public abstract class Model {
 
+    @JsonIgnore
     abstract public int getPrimaryKey();
 
     protected void save() {

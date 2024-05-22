@@ -16,6 +16,7 @@ public abstract class Product extends Model {
 
     }
 
+    @JsonIgnore
     public int getPrimaryKey(){
         return productId;
     }

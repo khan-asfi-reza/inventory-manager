@@ -5,6 +5,17 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
+        try {
+            User user = User.createUser("user1", "password");
+            User user1 = User.createUser("user2", "password");
+            User user2 = User.createUser("user3", "password");
+        }
+        catch (UserAlreadyExistsException e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(User.authenticate("user1", "password"));
+
 //        inventory.addItem(new Music("Submarine", 101, 20.0, "Rock", 1968, 5, 100, "The Beatles"));
 //        inventory.addItem(new Music("AM", 102, 10.0, "Indie Rock", 2013, 10, 10, "Arctic Monkeys"));
 //        inventory.addItem(new Movie("Good Will Hunting", 201, 12.0, "Drama", 1997, 2, 125, "Gus Van Sant"));
