@@ -2,8 +2,9 @@ package com.project.inventorymanagement;
 
 import java.io.*;
 
-public abstract class StockableProduct extends Product implements Stockable, Serializable  {
+public class StockableProduct<T> extends Product implements Stockable, Serializable  {
     private int numberOfItemsStocked;
+
 
     public StockableProduct() {
 
@@ -76,6 +77,8 @@ public abstract class StockableProduct extends Product implements Stockable, Ser
                 ", Year Published: " + this.getYearPublished() +
                 ", Stock Level: " + numberOfItemsStocked;
     }
+
+
 
 
 }

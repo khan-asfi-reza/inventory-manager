@@ -3,7 +3,10 @@ package com.project.inventorymanagement;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class Repository<T> {
 
@@ -31,6 +34,7 @@ public class Repository<T> {
                 try {
                     T item = JsonUtil.readFromJson(file.getAbsolutePath(), type);
                     cached.add(item);
+                    // Integer fileId = Integer.parseInt(file.getName().replace(".json", ""));
                 } catch (IOException e) {
                     System.out.println(e.getMessage());;
                 }
@@ -49,20 +53,8 @@ public class Repository<T> {
 
 
 
-    public void save(Model<?> item) {
-        String dirPath = "data/" + item.getClass().getSimpleName().toLowerCase() + "s/";
-        String filePath = dirPath + item.getPrimaryKey() + ".json";
-        try {
-            File directory = new File(dirPath);
-            if (!directory.exists()) {
-                boolean _ = directory.mkdirs();
-            }
-            JsonUtil.writeToJson(item, filePath);
-            fetchAll();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
 
-    }
+
+
 
 }

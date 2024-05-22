@@ -1,7 +1,7 @@
 package com.project.inventorymanagement;
 
 
-public class Movie extends StockableProduct {
+public class Movie extends StockableProduct<Movie> {
     private String director;
     public static final  Repository<Movie> repository = new Repository<>(Movie.class);
 
@@ -15,10 +15,6 @@ public class Movie extends StockableProduct {
         this.director = director;
     }
 
-    @Override
-    protected Repository<Movie> getRepository() {
-        return repository;
-    }
 
     public String getDirector() {
         return director;
@@ -33,5 +29,13 @@ public class Movie extends StockableProduct {
         return super.getInfo() + ", Directed by " + director;
     }
 
+    public static Movie filterByDirector(String director) {
+        for (Movie movie : repository.getAll()) {
+            if (movie.getDirector().equals(director)) {
+                return movie;
+            }
+        }
+        return null;
+    }
 
 }

@@ -3,8 +3,8 @@ package com.project.inventorymanagement;
 import java.io.*;
 import java.util.*;
 
-class Inventory implements Iterable<StockableProduct> {
-    private final ArrayList<StockableProduct> items;
+class Inventory implements Iterable<StockableProduct<?>> {
+    private final ArrayList<StockableProduct<?>> items;
 
 
 
@@ -17,38 +17,22 @@ class Inventory implements Iterable<StockableProduct> {
 
 
 
-    public void addItem(StockableProduct product) {
+    public void addItem(StockableProduct<?> product) {
         items.add(product);
         product.save();
     }
 
-    private void deleteJsonFile(StockableProduct item) {
-        String dirPath = "data/" + item.getClass().getSimpleName().toLowerCase() + "s/";
-        String filePath = dirPath + item.getProductId() + ".json";
-        File file = new File(filePath);
-        if (file.exists()) {
-            if (file.delete()) {
-                System.out.println("Deleted successfully" );
-            } else {
-                System.out.println("Failed to delete file" );
-            }
-        } else {
-            System.out.println("No file found to delete");
-        }
-    }
-
-
     void removeItem(int productId) {
-        for (StockableProduct item : items) {
+        for (StockableProduct<?> item : items) {
             if(item.getProductId() == productId){
-                deleteJsonFile(item);
+                item.delete();
                 this.items.remove(item);
             }
         }
     }
 
-    StockableProduct getItem(int productId) {
-        for (StockableProduct product : items) {
+    StockableProduct<?> getItem(int productId) {
+        for (StockableProduct<?> product : items) {
             if (product.getProductId() == productId) {
                 product.removeStock(1);
                 return product;
@@ -58,7 +42,7 @@ class Inventory implements Iterable<StockableProduct> {
     }
 
     void addProductStock(int productId, int numberOfNewStock) {
-        for (StockableProduct product : items) {
+        for (StockableProduct<?> product : items) {
             if (product.getProductId() == productId) {
                 product.addStock(numberOfNewStock);
                 product.save();
@@ -66,9 +50,9 @@ class Inventory implements Iterable<StockableProduct> {
         }
     }
 
-    public <T extends StockableProduct> ArrayList<T> getProductByClass(Class<T> type){
+    public <T extends StockableProduct<?>> ArrayList<T> getProductByClass(Class<T> type){
         ArrayList<T> products = new ArrayList<>();
-        for (StockableProduct product : items) {
+        for (StockableProduct<?> product : items) {
             if(type.isInstance(product)){
                 products.add(type.cast(product));
             }
@@ -86,7 +70,7 @@ class Inventory implements Iterable<StockableProduct> {
     }
 
     @Override
-    public Iterator<StockableProduct> iterator() {
+    public Iterator<StockableProduct<?>> iterator() {
         return items.iterator();
     }
 }

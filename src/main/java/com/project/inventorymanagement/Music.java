@@ -1,7 +1,7 @@
 package com.project.inventorymanagement;
 
 
-public class Music extends StockableProduct {
+public class Music extends StockableProduct<Music> {
 
     private String artistName;
     public static final  Repository<Music> repository = new Repository<>(Music.class);
@@ -16,10 +16,6 @@ public class Music extends StockableProduct {
         this.artistName = artistName;
     }
 
-    @Override
-    protected Repository<Music> getRepository() {
-        return repository;
-    }
 
     public String getArtistName() { return artistName; }
     public void setArtistName(String artistName) {
@@ -31,5 +27,13 @@ public class Music extends StockableProduct {
         return super.getInfo() + ", Performed by " + artistName;
     }
 
+    public static Music filterByDirector(String artistName) {
+        for (Music music : repository.getAll()) {
+            if (music.getArtistName().equals(artistName)) {
+                return music;
+            }
+        }
+        return null;
+    }
 
 }
