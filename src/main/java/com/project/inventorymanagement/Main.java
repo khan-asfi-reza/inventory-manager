@@ -25,7 +25,7 @@ public class Main {
         inventory.addItem(new Game("God of War", 302, 12.0, "Action", 2005, 5, 570, "Santa Monica Studio"));
         inventory.addItem(new Game("Grand Theft Auto V", 303, 30.0, "Action-Adventure", 2013, 20, 600, "Rockstar Games"));
 
-        for (StockableProduct product : inventory) {
+        for (StockableProduct<?> product : inventory) {
             System.out.println(product.getInfo());
         }
 

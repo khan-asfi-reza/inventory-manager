@@ -2,10 +2,8 @@ package com.project.inventorymanagement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.ArrayList;
 
-
-public class User extends Model<User>{
+public class User extends Model{
 
 
     private int id;
@@ -26,11 +24,6 @@ public class User extends Model<User>{
 
     }
 
-
-    @Override
-    protected Repository<User> getRepository() {
-        return repository;
-    }
 
     @Override
     @JsonIgnore
