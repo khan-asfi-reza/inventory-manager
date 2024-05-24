@@ -23,7 +23,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="149.0" layoutY="106.0" prefHeight="17.0" prefWidth="102.0" text="Welcome" textAlignment="CENTER" textFill="#4d4545">
+            <Label alignment="CENTER" layoutX="149.0" layoutY="133.0" prefHeight="17.0" prefWidth="102.0" text="Welcome" textAlignment="CENTER" textFill="#4d4545">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -36,12 +36,12 @@
             <Button id="loginBtn" layoutX="100.0" layoutY="321.0" mnemonicParsing="false" onAction="#signup" text="SignUp" textFill="WHITE">
 
             </Button>
-            <ImageView fitHeight="47.0" fitWidth="129.0" layoutX="155.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="186.0" fitWidth="173.0" layoutX="114.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="126.0" layoutY="143.0" prefHeight="20.0" prefWidth="149.0" text="Create Account" textAlignment="CENTER" textFill="#807b7b">
+            <Label alignment="CENTER" layoutX="126.0" layoutY="163.0" prefHeight="20.0" prefWidth="149.0" text="Create Account" textAlignment="CENTER" textFill="#807b7b">
                <font>
                   <Font name="Open Sans Medium" size="14.0" />
                </font>
@@ -57,7 +57,7 @@
                   <Font name="Open Sans Medium" size="12.0" />
                </font>
             </Label>
-            <Button id="signupBtn" onAction="#moveToLogin" layoutX="241.0" layoutY="388.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="69.0" text="Login" textFill="WHITE" />
+            <Button id="signupBtn" layoutX="241.0" layoutY="388.0" mnemonicParsing="false" onAction="#moveToLogin" prefHeight="41.0" prefWidth="69.0" text="Login" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>
