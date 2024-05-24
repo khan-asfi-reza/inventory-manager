@@ -1,0 +1,75 @@
+@font-face {
+
+    src: url('static/OpenSans-Medium.ttf');
+}
+
+@font-face {
+    src: url('static/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    src: url('static/OpenSans-Bold.ttf');
+}
+
+.root {
+    -fx-font-family: 'Open Sans Medium';
+
+}
+
+.login-pane {
+    -fx-padding: 20;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2;
+}
+
+.welcome-label {
+    -fx-font-family: 'Open Sans';
+    -fx-font-size: 20px;
+    -fx-text-fill: #333333;
+}
+
+.text-field, .password-field {
+    -fx-font-family: 'Open Sans';
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+}
+
+#loginBtn{
+    -fx-font-family: 'Open Sans';
+    -fx-background-color: #6200EE;
+    -fx-text-fill: white;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 25px;
+    -fx-padding: 10px;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
+
+#signupBtn{
+    -fx-font-family: 'Open Sans Medium';
+    -fx-background-color: white;
+    -fx-text-fill: #6200EE;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.anchor{
+    -fx-font-family: 'Open Sans Medium';
+    -fx-background-color: transparent;
+    -fx-text-fill: #313030;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+.anchor:hover{
+    -fx-text-fill: #6722d9;
+}
+
+#loginBtn:hover{
+    -fx-background-color: #6722d9;
+}
+
+#loginBtn:pressed {
+    -fx-background-color: #7028d7;
+}

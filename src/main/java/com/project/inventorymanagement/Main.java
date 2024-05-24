@@ -1,35 +1,52 @@
 package com.project.inventorymanagement;
 
-import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
-public class Main {
+import java.util.Objects;
+
+
+public class Main extends Application {
+    static {
+        Font.loadFont(Objects.requireNonNull(Tasks.class.getResource("styles/static/OpenSans-Regular.ttf")).toExternalForm(), 12);
+        Font.loadFont(Objects.requireNonNull(Tasks.class.getResource("styles/static/OpenSans-Medium.ttf")).toExternalForm(), 12);
+        Font.loadFont(Objects.requireNonNull(Tasks.class.getResource("styles/static/OpenSans-Bold.ttf")).toExternalForm(), 12);
+    }
     public static void main(String[] args) {
+        Tasks.mainMethod();
+        launch(args);
+    }
 
-        Inventory inventory = new Inventory();
-        try {
-            User user = User.createUser("user1", "password");
-            User user1 = User.createUser("user2", "password");
-            User user2 = User.createUser("user3", "password");
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles/styles.css")).toExternalForm());
+        primaryStage.setTitle("Inventory Management");
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("icon.png")).toExternalForm()));
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        //method to created to call logout method below
+        primaryStage.setOnCloseRequest(event -> {
+            event.consume();  //b|c of this line, the app will not close if you pressed cancel
+            logout(primaryStage);
+        });
+
+    }
+
+    public void logout(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("You're about to exit!");
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            stage.close();
         }
-        catch (UserAlreadyExistsException e){
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println(User.authenticate("user1", "password"));
-
-        inventory.addItem(new Music("Submarine", 101, 20.0, "Rock", 1968, 5, 100, "The Beatles"));
-        inventory.addItem(new Music("AM", 102, 10.0, "Indie Rock", 2013, 10, 10, "Arctic Monkeys"));
-        inventory.addItem(new Movie("Good Will Hunting", 201, 12.0, "Drama", 1997, 2, 125, "Gus Van Sant"));
-        inventory.addItem(new Movie("Life Is Beautiful", 202, 20.0, "Comedy", 1997, 0, 125, "Roberto Benigni"));
-        inventory.addItem(new Game("Red Dead Redemption 2", 301, 29.0, "Action-Adventure", 2018, 15, 560, "Rockstar Games"));
-        inventory.addItem(new Game("God of War", 302, 12.0, "Action", 2005, 5, 570, "Santa Monica Studio"));
-        inventory.addItem(new Game("Grand Theft Auto V", 303, 30.0, "Action-Adventure", 2013, 20, 600, "Rockstar Games"));
-
-        for (StockableProduct<?> product : inventory) {
-            System.out.println(product.getInfo());
-        }
-
-
-
     }
 }

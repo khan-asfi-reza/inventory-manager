@@ -31,6 +31,8 @@ public abstract class Product extends Model {
         this.discount = discount;
     }
 
+
+
     // Getters
     public String getName() { return name; }
     public int getProductId() { return productId; }

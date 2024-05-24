@@ -1,9 +1,8 @@
 package com.project.inventorymanagement;
 
-import java.io.*;
 import java.util.*;
 
-class Inventory implements Iterable<StockableProduct<?>> {
+public class Inventory implements Iterable<StockableProduct<?>> {
     private final ArrayList<StockableProduct<?>> items;
 
 

@@ -6,14 +6,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-class Invoice {
-    private ArrayList<Product> items;
-    private LocalDateTime date;
+public class Invoice {
+    private final ArrayList<StockableProduct<?>> items;
+    private final LocalDateTime date;
 
     // Constructor
     Invoice() {
         this.items = new ArrayList<>();
         this.date = LocalDateTime.now();
+    }
+
+    public ArrayList<StockableProduct<?>> getItems() {
+        return items;
+    }
+
+    public int getItemCount(){
+        return this.items.size();
     }
 
     // Get formatted date-time
@@ -23,19 +31,21 @@ class Invoice {
     }
 
     // Add product to invoice
-    public void addProduct(Product product) {
-        if (((StockableProduct) product).getNumberOfItemsStocked() > 0) {
+    public void addProduct(StockableProduct<?> product) {
+        if (((StockableProduct<?>) product).getNumberOfItemsStocked() > 0) {
             items.add(product);
-            ((StockableProduct) product).removeStock(1);
+            product.removeStock(1);
+            product.save();
         } else {
             System.out.println("Product is out of stock!");
         }
     }
 
     // Remove product from invoice
-    public void removeProduct(Product product) {
+    public void removeProduct(StockableProduct<?> product) {
         if (items.remove(product)) {
-            ((StockableProduct) product).addStock(1);
+            product.addStock(1);
+            product.save();
         } else {
             System.out.println("Product not found in invoice!");
         }
@@ -48,6 +58,10 @@ class Invoice {
             total += product.getPrice();
         }
         return total;
+    }
+
+    public double getPriceWithoutDiscount() {
+        return calculatePriceWithoutDiscount();
     }
 
     // Check if Full House discount is applicable

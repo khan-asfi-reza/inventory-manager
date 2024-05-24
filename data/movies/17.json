@@ -1,0 +1,10 @@
+{
+  "name" : "The Godfather",
+  "productId" : 17,
+  "price" : 20.0,
+  "genre" : "Drama",
+  "yearPublished" : 1997,
+  "discount" : 0.0,
+  "numberOfItemsStocked" : 125,
+  "director" : "Francis Ford Coppola"
+}

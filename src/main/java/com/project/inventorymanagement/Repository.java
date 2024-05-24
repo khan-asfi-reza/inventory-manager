@@ -43,11 +43,7 @@ public class Repository<T> {
     }
 
     public ArrayList<T> getAll() {
-        if(cached.isEmpty()){
-            cached  = new ArrayList <>();
-            fetchAll();
-            return cached;
-        }
+        fetchAll();
         return cached;
     }
 

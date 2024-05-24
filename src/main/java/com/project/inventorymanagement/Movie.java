@@ -1,6 +1,8 @@
 package com.project.inventorymanagement;
 
 
+import java.util.ArrayList;
+
 public class Movie extends StockableProduct<Movie> {
     private String director;
     public static final  Repository<Movie> repository = new Repository<>(Movie.class);
@@ -13,7 +15,10 @@ public class Movie extends StockableProduct<Movie> {
     Movie(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked, String director) {
         super(name, productId, price, genre, yearPublished, discount, numberOfItemsStocked);
         this.director = director;
+        // Auto assign ID
+        setProductId(IdStore.getIndex());
     }
+
 
 
     public String getDirector() {
@@ -29,13 +34,14 @@ public class Movie extends StockableProduct<Movie> {
         return super.getInfo() + ", Directed by " + director;
     }
 
-    public static Movie filterByDirector(String director) {
+    public static ArrayList<Movie> filterByDirector(String director) {
+        ArrayList<Movie> movies = new ArrayList<>();
         for (Movie movie : repository.getAll()) {
             if (movie.getDirector().equals(director)) {
-                return movie;
+                movies.add(movie);
             }
         }
-        return null;
+        return movies;
     }
 
 }

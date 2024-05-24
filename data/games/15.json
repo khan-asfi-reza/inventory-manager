@@ -1,10 +1,10 @@
 {
   "name" : "God of War",
-  "productId" : 302,
+  "productId" : 15,
   "price" : 12.0,
   "genre" : "Action",
   "yearPublished" : 2005,
   "discount" : 5.0,
-  "numberOfItemsStocked" : 570,
+  "numberOfItemsStocked" : 569,
   "developer" : "Santa Monica Studio"
 }

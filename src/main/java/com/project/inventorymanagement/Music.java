@@ -14,6 +14,8 @@ public class Music extends StockableProduct<Music> {
     Music(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked, String artistName) {
         super(name, productId, price, genre, yearPublished, discount, numberOfItemsStocked);
         this.artistName = artistName;
+        // Auto assign ID
+        setProductId(IdStore.getIndex());
     }
 
 
@@ -27,13 +29,25 @@ public class Music extends StockableProduct<Music> {
         return super.getInfo() + ", Performed by " + artistName;
     }
 
-    public static Music filterByDirector(String artistName) {
+    public static Music filterByArtist(String artistName) {
         for (Music music : repository.getAll()) {
             if (music.getArtistName().equals(artistName)) {
                 return music;
             }
         }
         return null;
+    }
+
+    public static Music getCheapestMusic(){
+        Music m = null;
+        double cheap = Double.MAX_VALUE;
+        for (Music music : repository.getAll()) {
+            if (cheap >= music.getPrice()) {
+                cheap = music.getPrice();
+                m = music;
+            }
+        }
+        return m;
     }
 
 }
