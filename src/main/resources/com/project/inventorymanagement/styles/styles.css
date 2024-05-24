@@ -55,6 +55,17 @@
     -fx-cursor: hand;
 }
 
+.btn{
+    -fx-font-family: 'Open Sans';
+    -fx-background-color: #6200EE;
+    -fx-text-fill: white;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 25px;
+    -fx-padding: 10px;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
 .anchor{
     -fx-font-family: 'Open Sans Medium';
     -fx-background-color: transparent;
@@ -71,5 +82,9 @@
 }
 
 #loginBtn:pressed {
+    -fx-background-color: #7028d7;
+}
+
+.btn:hover{
     -fx-background-color: #7028d7;
 }

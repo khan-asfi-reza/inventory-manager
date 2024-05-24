@@ -13,9 +13,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class InvoiceController implements Initializable {
 
@@ -25,6 +30,10 @@ public class InvoiceController implements Initializable {
 
     @FXML
     private Label usernameLabel;
+
+    @FXML
+    private Label invoiceSave;
+
     @FXML
     private Label itemCountLabel;
     @FXML
@@ -102,9 +111,9 @@ public class InvoiceController implements Initializable {
     }
 
     public void goToProduct(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
         root = loader.load();
-        InvoiceController controller = loader.getController();
+        HomeController controller = loader.getController();
         controller.setInvoice(invoice);
         controller.setInventory(inventory);
         controller.setUsernameLabel(usernameLabel.getText());
@@ -116,5 +125,32 @@ public class InvoiceController implements Initializable {
         stage.show();
     }
 
+
+    public void saveInvoice(ActionEvent event) throws IOException {
+        String path = "data/invoices/";
+        File dir = new File(path);
+        invoiceSave.setText("Invoice saved successfully");
+        if(!dir.exists()){
+            boolean _ = dir.mkdirs();
+        }
+        try {
+            PrintWriter printWriter = new PrintWriter(path+"/invoice"+invoice.getUnixTimestamp()+".txt");
+            printWriter.println(invoice.getInvoice());
+            printWriter.close();
+            Invoice invoice = new Invoice();
+            setTotalCountLabel("Total: ");
+            setItemCountLabel("Items: ");
+            setInvoice(invoice);
+            Thread.sleep(5000);
+            goToProduct(event);
+        }
+        catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

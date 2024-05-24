@@ -29,7 +29,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles/styles.css")).toExternalForm());
         primaryStage.setTitle("Inventory Management");
-        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("icon.png")).toExternalForm()));
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("Sprite.png")).toExternalForm()));
         primaryStage.setScene(scene);
         primaryStage.show();
 

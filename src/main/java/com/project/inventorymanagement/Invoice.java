@@ -1,6 +1,8 @@
 package com.project.inventorymanagement;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +30,12 @@ public class Invoice {
     public String getLocalDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return date.format(formatter);
+    }
+
+    // Get unix timestamp
+    public String getUnixTimestamp(){
+        long epoch = date.toEpochSecond(ZoneOffset.UTC);
+        return String.valueOf(epoch);
     }
 
     // Add product to invoice
