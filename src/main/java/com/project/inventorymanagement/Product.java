@@ -2,7 +2,6 @@ package com.project.inventorymanagement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.ArrayList;
 
 public abstract class Product extends Model {
     private String name;

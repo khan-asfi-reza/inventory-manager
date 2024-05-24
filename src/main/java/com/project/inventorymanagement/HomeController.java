@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+
 public class HomeController implements Initializable {
 
     private Stage stage;
@@ -63,12 +65,13 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        scrollPane.setFitToWidth(true); // Make sure the scroll pane fits the content to its width
+        // Make sure the scroll pane fits the content to its width
+        scrollPane.setFitToWidth(true);
         setTables();
     }
 
     public void setTables(){
-        VBox vbox = new VBox(10); // Create a VBox with spacing
+        VBox vbox = new VBox(10);
         vbox.setFillWidth(true);
         if(inventory == null){
             inventory = new Inventory();
@@ -87,13 +90,11 @@ public class HomeController implements Initializable {
         TableView<T> tableView = new TableView<>();
         setupCommonColumns(tableView);
         addTypeSpecificColumn(tableView, type);
-
         // Update cart for invoice
         TableColumn<T, Void> actionCol = new TableColumn<>("Cart");
         actionCol.setCellFactory(col -> new TableCell<T, Void>() {
             private final Button addButton = new Button("+");
             private final Button removeButton = new Button("-");
-
             {
                 addButton.setOnAction(event -> {
                     T item = getTableView().getItems().get(getIndex());
@@ -200,16 +201,19 @@ public class HomeController implements Initializable {
     }
 
     private <T extends StockableProduct<?>> void addTypeSpecificColumn(TableView<T> tableView, Class<T> type) {
-        // Specific columns as described before
+
         if (Game.class.equals(type)) {
+            // For Games Developer column
             TableColumn<T, String> developerCol = new TableColumn<>("Developer");
             developerCol.setCellValueFactory(new PropertyValueFactory<>("developer"));
             tableView.getColumns().add(developerCol);
         } else if (Movie.class.equals(type)) {
+            // For Movie Director column
             TableColumn<T, String> directorCol = new TableColumn<>("Director");
             directorCol.setCellValueFactory(new PropertyValueFactory<>("director"));
             tableView.getColumns().add(directorCol);
         } else if (Music.class.equals(type)) {
+            // For Music Artist column
             TableColumn<T, String> artistNameCol = new TableColumn<>("Artist Name");
             artistNameCol.setCellValueFactory(new PropertyValueFactory<>("artistName"));
             tableView.getColumns().add(artistNameCol);

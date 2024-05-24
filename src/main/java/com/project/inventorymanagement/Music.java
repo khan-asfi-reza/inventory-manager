@@ -1,9 +1,12 @@
 package com.project.inventorymanagement;
 
 
-public class Music extends StockableProduct<Music> {
+import java.util.ArrayList;
 
+public class Music extends StockableProduct<Music> {
+    // Name of the artist
     private String artistName;
+    // Repository contains the Music instances as an ArrayList, and it reads from data/musics directory json files
     public static final  Repository<Music> repository = new Repository<>(Music.class);
 
     public Music() {
@@ -27,13 +30,19 @@ public class Music extends StockableProduct<Music> {
         return super.getInfo() + ", Performed by " + artistName;
     }
 
-    public static Music filterByArtist(String artistName) {
+    /**
+     * Return music produced by artist
+     * @param artistName Name of the artist
+     * @return ArrayList<Games>
+     */
+    public static ArrayList<Music> filterByArtist(String artistName) {
+        ArrayList<Music> musics = new ArrayList<>();
         for (Music music : repository.getAll()) {
             if (music.getArtistName().equals(artistName)) {
-                return music;
+                musics.add(music);
             }
         }
-        return null;
+        return musics;
     }
 
     public static Music getCheapestMusic(){

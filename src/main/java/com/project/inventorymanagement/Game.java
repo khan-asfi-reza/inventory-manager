@@ -1,8 +1,12 @@
 package com.project.inventorymanagement;
 
 
+import java.util.ArrayList;
+
 public class Game extends StockableProduct<Game> {
+    // Developer of the game
     private String developer;
+    // Repository contains the Game instances as an ArrayList, and it reads from data/games directory json files
     public static final Repository<Game> repository = new Repository<>(Game.class);
 
 
@@ -29,13 +33,19 @@ public class Game extends StockableProduct<Game> {
         return super.getInfo() + ", Developed by " + developer;
     }
 
-    public static Game filterByDeveloper(String developer) {
+    /**
+     * Return games developed by developer
+     * @param developer Name of the developer
+     * @return ArrayList<Games>
+     */
+    public static ArrayList<Game> filterByDeveloper(String developer) {
+        ArrayList<Game> games = new ArrayList<>();
         for (Game game : repository.getAll()) {
             if (game.getDeveloper().equals(developer)) {
-                return game;
+                games.add(game);
             }
         }
-        return null;
+        return games;
     }
 
 
