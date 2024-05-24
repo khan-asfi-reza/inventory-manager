@@ -1,10 +1,10 @@
 package com.project.inventorymanagement;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,9 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.sql.Time;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class InvoiceController implements Initializable {
 
@@ -137,18 +135,22 @@ public class InvoiceController implements Initializable {
             PrintWriter printWriter = new PrintWriter(path+"/invoice"+invoice.getUnixTimestamp()+".txt");
             printWriter.println(invoice.getInvoice());
             printWriter.close();
+            PrinterJob job = PrinterJob.createPrinterJob();
+            if (job != null && job.showPrintDialog(vboxContainer.getScene().getWindow())){
+                boolean success = job.printPage(vboxContainer);
+                if (success) {
+                    job.endJob();
+                }
+            }
             Invoice invoice = new Invoice();
             setTotalCountLabel("Total: ");
             setItemCountLabel("Items: ");
             setInvoice(invoice);
-            Thread.sleep(5000);
             goToProduct(event);
         }
         catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
 
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
 
     }

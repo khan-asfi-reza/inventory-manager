@@ -33,9 +33,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        //method to created to call logout method below
         primaryStage.setOnCloseRequest(event -> {
-            event.consume();  //b|c of this line, the app will not close if you pressed cancel
+            event.consume();
             logout(primaryStage);
         });
 
