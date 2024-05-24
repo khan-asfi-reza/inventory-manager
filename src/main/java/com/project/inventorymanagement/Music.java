@@ -14,8 +14,6 @@ public class Music extends StockableProduct<Music> {
     Music(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked, String artistName) {
         super(name, productId, price, genre, yearPublished, discount, numberOfItemsStocked);
         this.artistName = artistName;
-        // Auto assign ID
-        setProductId(IdStore.getIndex());
     }
 
 

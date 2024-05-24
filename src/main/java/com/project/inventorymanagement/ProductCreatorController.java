@@ -36,6 +36,10 @@ public class ProductCreatorController implements Initializable {
     private TextField genreField;
     @FXML
     private TextField discountField;
+
+    @FXML
+    private TextField productIdField;
+
     @FXML
     private ChoiceBox<String> category;
 
@@ -80,7 +84,7 @@ public class ProductCreatorController implements Initializable {
         controller.setInvoice(invoice);
         controller.setInventory(inventory);
         controller.setUsernameLabel(usernameLabel.getText());
-        controller.refreshTables();
+
         if(invoice != null){
             controller.setItemCountLabel("Items: " + invoice.getItemCount());
             controller.setTotalCountLabel("Total: " + invoice.calculateDiscountedPrice());
@@ -103,6 +107,7 @@ public class ProductCreatorController implements Initializable {
         String creator = creatorField.getText();
         String yearPublished = yearPublishedField.getText();
         String categoryValue = category.getValue();
+        String productId = productIdField.getText();
         if(name.trim().isEmpty() || price.trim().isEmpty() || genre.trim().isEmpty() || discount.trim().isEmpty() || creator.trim().isEmpty() || yearPublished.trim().isEmpty() || categoryValue.trim().isEmpty()){
             errorLabel.setText("Please input all fields");
         }
@@ -111,21 +116,27 @@ public class ProductCreatorController implements Initializable {
                 double priceInt = Double.parseDouble(price);
                 double discountInt = Double.parseDouble(discount);
                 int yearPublishedInt = Integer.parseInt(yearPublished);
-
-                switch (categoryValue) {
-                    case "Game" -> {
-                        inventory.addItem(new Game(name, 0, priceInt, genre, yearPublishedInt, discountInt, 0, creator));
-                        successLabel.setText("Successfully created Game ");
+                int productIdInt = Integer.parseInt(productId);
+                StockableProduct<?> product = inventory.getItem(productIdInt);
+                if(product != null){
+                    errorLabel.setText("Product ID already exists");
+                }
+                else{
+                    switch (categoryValue) {
+                        case "Game" -> {
+                            inventory.addItem(new Game(name, productIdInt, priceInt, genre, yearPublishedInt, discountInt, 0, creator));
+                            successLabel.setText("Successfully created Game ");
+                        }
+                        case "Music" -> {
+                            inventory.addItem(new Music(name, productIdInt, priceInt, genre, yearPublishedInt, discountInt, 0, creator));
+                            successLabel.setText("Successfully created Music ");
+                        }
+                        case "Movie" -> {
+                            inventory.addItem(new Movie(name, productIdInt, priceInt, genre, yearPublishedInt, discountInt, 0, creator));
+                            successLabel.setText("Successfully created Movie ");
+                        }
+                        default -> errorLabel.setText("Invalid category value");
                     }
-                    case "Music" -> {
-                        inventory.addItem(new Music(name, 0, priceInt, genre, yearPublishedInt, discountInt, 0, creator));
-                        successLabel.setText("Successfully created Music ");
-                    }
-                    case "Movie" -> {
-                        inventory.addItem(new Movie(name, 0, priceInt, genre, yearPublishedInt, discountInt, 0, creator));
-                        successLabel.setText("Successfully created Movie ");
-                    }
-                    default -> errorLabel.setText("Invalid category value");
                 }
             }
             catch(NumberFormatException e){

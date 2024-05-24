@@ -1,0 +1,10 @@
+{
+  "name" : "Good Will Hunting",
+  "productId" : 201,
+  "price" : 12.0,
+  "genre" : "Drama",
+  "yearPublished" : 1997,
+  "discount" : 2.0,
+  "numberOfItemsStocked" : 124,
+  "director" : "Gus Van Sant"
+}

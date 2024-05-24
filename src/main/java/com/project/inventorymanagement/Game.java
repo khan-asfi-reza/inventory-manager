@@ -13,8 +13,6 @@ public class Game extends StockableProduct<Game> {
     Game(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked, String developer) {
         super(name, productId, price, genre, yearPublished, discount, numberOfItemsStocked);
         this.developer = developer;
-        // Auto assign ID
-        setProductId(IdStore.getIndex());
     }
 
 

@@ -81,12 +81,7 @@ public class HomeController implements Initializable {
         setupTableForType(inventory.getProductByClass(Music.class), Music.class, "Music");
     }
 
-    void refreshTables(){
-        vboxContainer.getChildren().clear();
-        System.out.println("A");
-        System.out.println(inventory.getProductByClass(Game.class));
-        setTables();
-    }
+
 
     private <T extends StockableProduct<?>> void setupTableForType(ArrayList<T> items, Class<T> type, String labelName) {
         TableView<T> tableView = new TableView<>();

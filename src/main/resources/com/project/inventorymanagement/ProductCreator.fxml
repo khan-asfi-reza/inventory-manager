@@ -29,12 +29,12 @@
                 <Button layoutX="116.0" layoutY="27.0" mnemonicParsing="false" onAction="#goToProduct" styleClass="anchor" stylesheets="@styles/styles.css" text="Products" />
               <StackPane layoutX="21.0" layoutY="95.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" styleClass="root" stylesheets="@styles/styles.css">
                   <padding>
-                      <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+                      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                   </padding>
                   <children>
-                      <AnchorPane maxHeight="596.0" maxWidth="400.0" minHeight="550.0" minWidth="400.0" prefHeight="596.0" prefWidth="400.0" style="-fx-background-color: #fff; -fx-background-radius: 10;" StackPane.alignment="CENTER">
+                      <AnchorPane maxHeight="627.0" maxWidth="413.0" minHeight="550.0" minWidth="400.0" prefHeight="570.0" prefWidth="453.0" style="-fx-background-color: #fff; -fx-background-radius: 10;" StackPane.alignment="CENTER">
                           <children>
-                              <TextField id="nameField" fx:id="nameField" layoutX="100.0" layoutY="60.0" prefHeight="32.0" prefWidth="400.0" promptText="Name" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                              <TextField id="nameField" fx:id="nameField" layoutX="100.0" layoutY="40.0" prefHeight="32.0" prefWidth="400.0" promptText="Name" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
                                   <font>
                                       <Font size="14.0" />
                                   </font>
@@ -42,52 +42,57 @@
                               <Button id="loginBtn" layoutX="100.0" layoutY="509.0" mnemonicParsing="false" onAction="#createProduct" text="Create" textFill="WHITE">
 
                         </Button>
-                        <TextField id="priceField" fx:id="priceField" layoutX="100.0" layoutY="107.0" prefHeight="32.0" prefWidth="269.0" promptText="Price" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                        <TextField id="priceField" fx:id="priceField" layoutX="100.0" layoutY="128.0" prefHeight="32.0" prefWidth="269.0" promptText="Price" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TextField id="genreField" fx:id="genreField" layoutX="100.0" layoutY="156.0" prefHeight="32.0" prefWidth="269.0" promptText="Genre" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                        <TextField id="genreField" fx:id="genreField" layoutX="100.0" layoutY="177.0" prefHeight="32.0" prefWidth="269.0" promptText="Genre" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TextField id="discountField" fx:id="discountField" layoutX="100.0" layoutY="207.0" prefHeight="32.0" prefWidth="269.0" promptText="Discount" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                        <TextField id="discountField" fx:id="discountField" layoutX="100.0" layoutY="220.0" prefHeight="32.0" prefWidth="269.0" promptText="Discount" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <ChoiceBox fx:id="category" layoutX="103.0" layoutY="283.0" prefHeight="30.0" prefWidth="194.0" />
-                        <Label layoutX="103.0" layoutY="253.0" prefHeight="30.0" prefWidth="115.0" text="Category">
+                        <ChoiceBox fx:id="category" layoutX="104.0" layoutY="298.0" prefHeight="30.0" prefWidth="194.0" />
+                        <Label layoutX="104.0" layoutY="260.0" prefHeight="30.0" prefWidth="115.0" text="Category">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField id="creatorField" fx:id="creatorField" layoutX="100.0" layoutY="327.0" prefHeight="32.0" prefWidth="269.0" promptText="Director / Artist / Publisher" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                        <TextField id="creatorField" fx:id="creatorField" layoutX="100.0" layoutY="343.0" prefHeight="32.0" prefWidth="269.0" promptText="Director / Artist / Publisher" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TextField id="yearPublishedField" fx:id="yearPublishedField" layoutX="100.0" layoutY="373.0" prefHeight="32.0" prefWidth="269.0" promptText="Year Published" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                        <TextField id="yearPublishedField" fx:id="yearPublishedField" layoutX="100.0" layoutY="385.0" prefHeight="32.0" prefWidth="269.0" promptText="Year Published" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label id="label" alignment="CENTER" layoutX="95.0" prefHeight="43.0" prefWidth="211.0" text="Create Product" textAlignment="CENTER" textFill="#4d4545">
+                        <Label id="label" alignment="CENTER" layoutX="95.0" layoutY="-21.0" prefHeight="43.0" prefWidth="211.0" text="Create Product" textAlignment="CENTER" textFill="#4d4545">
                            <font>
                               <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
-                        <Label id="successLabel" fx:id="successLabel" layoutX="103.0" layoutY="454.0" prefHeight="30.0" prefWidth="115.0" textFill="#66cd32">
+                        <Label id="successLabel" fx:id="successLabel" layoutX="103.0" layoutY="467.0" prefHeight="30.0" prefWidth="194.0" textFill="#66cd32">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label id="errorLabel" fx:id="errorLabel" layoutX="103.0" layoutY="424.0" prefHeight="30.0" prefWidth="115.0" textFill="#d73939">
+                        <Label id="errorLabel" fx:id="errorLabel" layoutX="103.0" layoutY="437.0" prefHeight="30.0" prefWidth="194.0" textFill="#d73939">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
+                        <TextField id="productId" fx:id="productIdField" layoutX="100.0" layoutY="83.0" prefHeight="32.0" prefWidth="400.0" promptText="Product ID" style="-fx-background-color: #fff; -fx-border-color: #6c6c6c; -fx-border-radius: 4;" styleClass="input">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
                           </children>
                       </AnchorPane>
                   </children>

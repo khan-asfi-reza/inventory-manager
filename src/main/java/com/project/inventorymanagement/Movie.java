@@ -15,8 +15,6 @@ public class Movie extends StockableProduct<Movie> {
     Movie(String name, int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked, String director) {
         super(name, productId, price, genre, yearPublished, discount, numberOfItemsStocked);
         this.director = director;
-        // Auto assign ID
-        setProductId(IdStore.getIndex());
     }
 
 
